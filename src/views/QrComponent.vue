@@ -25,10 +25,19 @@ export default {
   },
   methods: {
     saveImage() {
+      window.scrollTo(0, 0);// you need to scrool to top for safari hack
+      var e = document.getElementById("qrcode");
+      var e_width = e.offsetWidth;
+      var e_height = e.offsetHeight;
+      var e_x_offset = window.scrollX + e.getBoundingClientRect().left;
+      var e_y_offset = window.scrollY + e.getBoundingClientRect().top;
       html2canvas(document.querySelector('#qrcode'),
         {
-          scrollX: 0,
-          scrollY: -window.scrollY
+          scale: 1,
+          width: 300,
+          height: 300,
+          x: e_x_offset-108,
+          y: e_y_offset
         })
         .then(canvas => {
           var seconds = new Date().getTime() / 1000;
@@ -46,7 +55,7 @@ export default {
       new QRCode(document.getElementById('qrcode'), {
         width: 300,
         height: 300,
-        text: 'https://sharechess.com/#/?fen=' + this.fenString,
+        text: 'https://sharechess.com/?fen=' + this.fenString,
         colorDark: '#000',
         colorLight: '#fff',
         correctLevel: QRCode.CorrectLevel.L
@@ -63,6 +72,10 @@ export default {
 </script>
 <style lang="scss">
 .qr-component {
+  .hide-scrollbar {
+    overflow: -moz-hidden-unscrollable;
+    overflow: hidden;
+  }
 
   display: flex;
   justify-content: center;

@@ -95,6 +95,12 @@ export default {
 };
 </script>
 <style lang="scss">
+
+:root {
+ --light-color:#fff !important;
+ --dark-color:#000 !important;
+}
+
 .full-width {
   width: 100%;
   display: flex;
