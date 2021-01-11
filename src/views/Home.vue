@@ -2,12 +2,18 @@
   <div class="full-width">
     <home-title/>
     <div class="chess-board-home">
-      <chess-board id="mainBoard"
-                   draggable-pieces
-                   style="width: 400px"
-      ></chess-board>
+      <div>
+        <chess-board id="mainBoard"
+                     draggable-pieces
+                     :style="'width: '+dynamicWidth+'px'"
+        ></chess-board>
+
+        <share-via-twitter :fenString="fenString"/>
+      </div>
+
       <div>
         <share-via-whatsapp :fenString="fenString"/>
+
         <fen-component :fenString="fenString"/>
         <qr-component :fenString="fenString"/>
         <div class="restart-board">
@@ -24,7 +30,7 @@ import HomeTitle from '@/views/HomeTitle';
 import FenComponent from '@/views/FenComponent';
 import QrComponent from '@/views/QrComponent';
 import ShareViaWhatsapp from '@/views/ShareViaWhatsapp';
-import RestartBoard from '@/views/RestartBoard';
+import ShareViaTwitter from '@/views/ShareViaTwitter';
 
 export default {
   name: 'Home',
@@ -67,10 +73,19 @@ export default {
         return false;
       }
       return decodeURI(this.$route.query.fen);
+    },
+    dynamicWidth(){
+      if (window.innerWidth< 350){
+        return 300
+      }
+      if (window.innerWidth< 400){
+        return 350
+      }
+      return 400
     }
   },
   components: {
-    RestartBoard,
+    ShareViaTwitter,
     ShareViaWhatsapp,
     QrComponent,
     FenComponent,
@@ -108,6 +123,7 @@ export default {
     align-items: center;
     width: 100%;
     flex-direction: column;
+    padding: 5px;
 
   }
 

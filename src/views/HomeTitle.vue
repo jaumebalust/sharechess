@@ -1,6 +1,6 @@
 <template>
   <div class="home-title">
-    <div class="home-title__title">Share chess games easily</div>
+    <div class="home-title__title">Share chess boards easily</div>
     <div class="home-title__content">
 
     </div>
