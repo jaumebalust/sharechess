@@ -7,10 +7,10 @@
                      draggable-pieces
                      :style="'width: '+dynamicWidth+'px'"
         ></chess-board>
-        <div v-if="isMobile">
-          <iframe  style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="https://rcm-eu.amazon-adsystem.com/e/cm?ref=tf_til&t=sharechess07-21&m=amazon&o=30&p=8&l=as1&IS1=1&asins=8491871330&linkId=5c0ea1d48955f21bbc056cb3cee6b39b&bc1=ffffff&amp;lt1=_top&fc1=333333&lc1=0066c0&bg1=ffffff&f=ifr">
+        <div v-if="isMobile" class="affiliate-links-mobile">
+          <iframe  style="width:120px;height:300px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="https://rcm-eu.amazon-adsystem.com/e/cm?ref=tf_til&t=sharechess07-21&m=amazon&o=30&p=8&l=as1&IS1=1&asins=8491871330&linkId=5c0ea1d48955f21bbc056cb3cee6b39b&bc1=ffffff&amp;lt1=_top&fc1=333333&lc1=0066c0&bg1=ffffff&f=ifr">
           </iframe>
-          <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="https://rcm-eu.amazon-adsystem.com/e/cm?ref=tf_til&t=sharechess07-21&m=amazon&o=30&p=8&l=as1&IS1=1&asins=1906552010&linkId=a8ceed529f2205edb5d7301b9af86128&bc1=FFFFFF&amp;lt1=_top&fc1=333333&lc1=0066C0&bg1=FFFFFF&f=ifr">
+          <iframe style="width:120px;height:300px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="https://rcm-eu.amazon-adsystem.com/e/cm?ref=tf_til&t=sharechess07-21&m=amazon&o=30&p=8&l=as1&IS1=1&asins=1906552010&linkId=a8ceed529f2205edb5d7301b9af86128&bc1=FFFFFF&amp;lt1=_top&fc1=333333&lc1=0066C0&bg1=FFFFFF&f=ifr">
           </iframe>
         </div>
         <div>
@@ -21,10 +21,10 @@
 
         <share-via-twitter :fenString="fenString"/>
       </div>
-      <div v-if="!isMobile">
-        <iframe  style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="https://rcm-eu.amazon-adsystem.com/e/cm?ref=tf_til&t=sharechess07-21&m=amazon&o=30&p=8&l=as1&IS1=1&asins=8491871330&linkId=5c0ea1d48955f21bbc056cb3cee6b39b&bc1=ffffff&amp;lt1=_top&fc1=333333&lc1=0066c0&bg1=ffffff&f=ifr">
+      <div v-if="!isMobile" class="affiliate-links-desktop">
+        <iframe  style="width:120px;height:300px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="https://rcm-eu.amazon-adsystem.com/e/cm?ref=tf_til&t=sharechess07-21&m=amazon&o=30&p=8&l=as1&IS1=1&asins=8491871330&linkId=5c0ea1d48955f21bbc056cb3cee6b39b&bc1=ffffff&amp;lt1=_top&fc1=333333&lc1=0066c0&bg1=ffffff&f=ifr">
         </iframe>
-        <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="https://rcm-eu.amazon-adsystem.com/e/cm?ref=tf_til&t=sharechess07-21&m=amazon&o=30&p=8&l=as1&IS1=1&asins=1906552010&linkId=a8ceed529f2205edb5d7301b9af86128&bc1=FFFFFF&amp;lt1=_top&fc1=333333&lc1=0066C0&bg1=FFFFFF&f=ifr">
+        <iframe style="width:120px;height:300px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="https://rcm-eu.amazon-adsystem.com/e/cm?ref=tf_til&t=sharechess07-21&m=amazon&o=30&p=8&l=as1&IS1=1&asins=1906552010&linkId=a8ceed529f2205edb5d7301b9af86128&bc1=FFFFFF&amp;lt1=_top&fc1=333333&lc1=0066C0&bg1=FFFFFF&f=ifr">
         </iframe>
       </div>
 
@@ -113,7 +113,18 @@ export default {
 };
 </script>
 <style lang="scss">
+.affiliate-links-mobile{
+  display: flex;
 
+  justify-content: space-evenly;
+}
+
+.affiliate-links-desktop{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
 :root {
  --light-color:#fff !important;
  --dark-color:#000 !important;
