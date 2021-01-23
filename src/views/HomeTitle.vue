@@ -22,7 +22,7 @@ export default {
 </script>
 <style lang="scss">
 .home-title {
-  padding-bottom: 5vh;
+  padding-bottom: 2vh;
   &__title {
 
     font-size: 2em;

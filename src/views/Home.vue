@@ -7,10 +7,25 @@
                      draggable-pieces
                      :style="'width: '+dynamicWidth+'px'"
         ></chess-board>
-        <a href="https://www.buymeacoffee.com/jaumebalust"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=jaumebalust&button_colour=5F7FFF&font_colour=ffffff&font_family=Poppins&outline_colour=000000&coffee_colour=FFDD00"></a>
+        <div v-if="isMobile">
+          <iframe  style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="https://rcm-eu.amazon-adsystem.com/e/cm?ref=tf_til&t=sharechess07-21&m=amazon&o=30&p=8&l=as1&IS1=1&asins=8491871330&linkId=5c0ea1d48955f21bbc056cb3cee6b39b&bc1=ffffff&amp;lt1=_top&fc1=333333&lc1=0066c0&bg1=ffffff&f=ifr">
+          </iframe>
+          <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="https://rcm-eu.amazon-adsystem.com/e/cm?ref=tf_til&t=sharechess07-21&m=amazon&o=30&p=8&l=as1&IS1=1&asins=1906552010&linkId=a8ceed529f2205edb5d7301b9af86128&bc1=FFFFFF&amp;lt1=_top&fc1=333333&lc1=0066C0&bg1=FFFFFF&f=ifr">
+          </iframe>
+        </div>
+        <div>
+          <a href="https://www.buymeacoffee.com/jaumebalust"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=jaumebalust&button_colour=5F7FFF&font_colour=ffffff&font_family=Poppins&outline_colour=000000&coffee_colour=FFDD00"></a>
+        </div>
+
 
 
         <share-via-twitter :fenString="fenString"/>
+      </div>
+      <div v-if="!isMobile">
+        <iframe  style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="https://rcm-eu.amazon-adsystem.com/e/cm?ref=tf_til&t=sharechess07-21&m=amazon&o=30&p=8&l=as1&IS1=1&asins=8491871330&linkId=5c0ea1d48955f21bbc056cb3cee6b39b&bc1=ffffff&amp;lt1=_top&fc1=333333&lc1=0066c0&bg1=ffffff&f=ifr">
+        </iframe>
+        <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="https://rcm-eu.amazon-adsystem.com/e/cm?ref=tf_til&t=sharechess07-21&m=amazon&o=30&p=8&l=as1&IS1=1&asins=1906552010&linkId=a8ceed529f2205edb5d7301b9af86128&bc1=FFFFFF&amp;lt1=_top&fc1=333333&lc1=0066C0&bg1=FFFFFF&f=ifr">
+        </iframe>
       </div>
 
       <div>
@@ -39,14 +54,14 @@ export default {
   data() {
     return {
       board: null,
-      fenString:''
+      fenString: '',
 
     };
   },
   mounted() {
-    var This = this;
+    const This = this;
     this.board = document.querySelector('#mainBoard');
-    //check for a FEN
+    // check for a FEN
     if (!this.fen) {
       this.board.start();
     } else {
@@ -54,37 +69,38 @@ export default {
     }
     This.fenString = This.board.fen();
     This.board.addEventListener('change', (e) => {
-      setTimeout(()=>{
+      setTimeout(() => {
         This.fenString = This.board.fen();
-        console.log('event',This.board.fen())
-      },300)
-
-
+        console.log('event', This.board.fen());
+      }, 300);
     });
-
   },
-  methods:{
-    restartBoard(){
-      this.board.start()
-    }
+  methods: {
+    restartBoard() {
+      this.board.start();
+    },
+
+
   },
   computed: {
+    isMobile() {
+      return window.innerWidth <= 800
+    },
     fen() {
-
       if (!this.$route.query.fen) {
         return false;
       }
       return decodeURI(this.$route.query.fen);
     },
-    dynamicWidth(){
-      if (window.innerWidth< 350){
-        return 300
+    dynamicWidth() {
+      if (window.innerWidth < 350) {
+        return 300;
       }
-      if (window.innerWidth< 400){
-        return 350
+      if (window.innerWidth < 400) {
+        return 350;
       }
-      return 400
-    }
+      return 400;
+    },
   },
   components: {
     ShareViaTwitter,
@@ -92,7 +108,7 @@ export default {
     QrComponent,
     FenComponent,
     HomeTitle,
-    ChessBoard
+    ChessBoard,
   },
 };
 </script>
