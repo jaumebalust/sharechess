@@ -55,7 +55,7 @@ export default {
       new QRCode(document.getElementById('qrcode'), {
         width: 300,
         height: 300,
-        text: 'https://sharechess.com/?fen=' + this.fenString,
+        text: 'https://sharechess.jaumebalust.com/?fen=' + this.fenString,
         colorDark: '#000',
         colorLight: '#fff',
         correctLevel: QRCode.CorrectLevel.L

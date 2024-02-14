@@ -43,7 +43,7 @@ export default {
   },
   computed: {
     shareUrl() {
-      return encodeURI('https://sharechess.com/?fen=' + this.fenString);
+      return encodeURI('https://sharechess.jaumebalust.com/?fen=' + this.fenString);
     },
     text() {
       return 'Check out this chess board...';

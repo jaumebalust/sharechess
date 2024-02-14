@@ -30,7 +30,7 @@ export default {
   },
   computed: {
     text(){
-      return encodeURI('Check out this chess board: https://sharechess.com/?fen='+this.fenString)
+      return encodeURI('Check out this chess board: https://sharechess.jaumebalust.com/?fen='+this.fenString)
     }
   }
 };
